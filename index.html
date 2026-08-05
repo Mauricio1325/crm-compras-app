@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>CasaList</title>
+  <meta name="theme-color" content="#6d8f58" />
+  <meta name="description" content="Lista de compras compartilhada da casa" />
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="CasaList" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- ===================== TELA 1: escolher usuário ===================== -->
+  <section id="tela-usuario" class="tela">
+    <div class="centro">
+      <div class="logo">🧺</div>
+      <h1>CasaList</h1>
+      <p class="subtitulo">Quem é você?</p>
+
+      <div class="botoes-usuario">
+        <button class="btn-usuario" data-nome="Mar">Mar</button>
+        <button class="btn-usuario" data-nome="João">João</button>
+        <button class="btn-usuario" data-nome="Maria">Maria</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TELA 2: lista principal ===================== -->
+  <section id="tela-lista" class="tela escondido">
+    <header class="cabecalho">
+      <div>
+        <h1>🧺 CasaList</h1>
+        <p id="saudacao" class="saudacao"></p>
+      </div>
+    </header>
+
+    <ul id="lista-produtos" class="lista-produtos"></ul>
+
+    <button id="btn-adicionar" class="botao-flutuante" aria-label="Adicionar produto">➕</button>
+  </section>
+
+  <!-- ===================== TELA 3: adicionar produto ===================== -->
+  <section id="tela-adicionar" class="tela escondido">
+    <header class="cabecalho cabecalho-com-voltar">
+      <button id="btn-voltar-adicionar" class="btn-voltar" aria-label="Voltar">←</button>
+      <h1>Adicionar Produto</h1>
+    </header>
+
+    <form id="form-adicionar" class="form-adicionar">
+      <label class="campo">
+        <span>Nome do produto</span>
+        <input type="text" id="input-nome" required placeholder="Ex: Arroz" autocomplete="off" />
+      </label>
+
+      <div class="linha">
+        <label class="campo col-pequena">
+          <span>Quantidade</span>
+          <input type="number" id="input-quantidade" value="1" min="0" step="any" inputmode="decimal" />
+        </label>
+
+        <label class="campo col-grande">
+          <span>Unidade</span>
+          <select id="input-unidade">
+            <option value="unidade">unidade(s)</option>
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="litro">litro(s)</option>
+            <option value="ml">ml</option>
+            <option value="pacote">pacote(s)</option>
+            <option value="caixa">caixa(s)</option>
+            <option value="garrafa">garrafa(s)</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="campo">
+        <span>Observação (opcional)</span>
+        <input type="text" id="input-observacao" placeholder="Ex: comprar a marca X" autocomplete="off" />
+      </label>
+
+      <button type="submit" class="botao-principal botao-salvar">Salvar</button>
+    </form>
+  </section>
+
+  <!-- ===================== MODAL: confirmar compra ===================== -->
+  <div id="modal-confirmar" class="modal escondido">
+    <div class="modal-conteudo">
+      <p class="modal-pergunta">Você comprou este produto?</p>
+      <p id="confirmar-nome-produto" class="modal-produto"></p>
+
+      <div class="modal-botoes">
+        <button id="btn-confirmar-cancelar" class="botao-secundario">CANCELAR</button>
+        <button id="btn-confirmar-sim" class="botao-principal">SIM</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- app.js é um módulo ES e importa firebase.js internamente -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
