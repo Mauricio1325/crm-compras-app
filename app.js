@@ -46,9 +46,9 @@ garantirAutenticacao()
       abrirTelaUsuario();
     }
   })
-  .catch(() => {
+  .catch((erro) => {
     listaProdutosEl.innerHTML =
-      '<li class="mensagem-vazia">Não foi possível conectar. Verifique sua internet e recarregue a página.</li>';
+      `<li class="mensagem-vazia">Erro de conexão: ${erro.message || erro}</li>`;
   });
 
 // ============================================================
