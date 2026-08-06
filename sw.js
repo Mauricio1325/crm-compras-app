@@ -5,7 +5,7 @@
 // continuam vindo do Firestore (que tem seu próprio cache offline).
 // ============================================================
 
-const NOME_CACHE = "casalist-v1";
+const NOME_CACHE = "casalist-v2";
 
 const ARQUIVOS_PARA_CACHE = [
   "./",
