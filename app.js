@@ -186,7 +186,7 @@ formAdicionar.addEventListener("submit", async (evento) => {
     criadoPor: usuarioAtual,
     criadoEm: serverTimestamp(),
   }).catch((erro) => {
-    console.error("Erro ao salvar:", erro);
+    alert("ERRO AO SALVAR NO BANCO DE DADOS: " + erro.message);
   });
 });
 
