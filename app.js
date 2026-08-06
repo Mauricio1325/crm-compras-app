@@ -168,26 +168,26 @@ formAdicionar.addEventListener("submit", async (evento) => {
   botaoSalvar.disabled = true;
   botaoSalvar.textContent = "Salvando...";
 
-  try {
-    await addDoc(collection(db, NOME_COLECAO), {
-      nome,
-      quantidade,
-      unidade,
-      observacao,
-      criadoPor: usuarioAtual,
-      criadoEm: serverTimestamp(),
-    });
+  // Fecha a tela e limpa o formulário instantaneamente (Atualização Otimista)
+  formAdicionar.reset();
+  document.getElementById("input-quantidade").value = 1;
+  telaAdicionar.classList.add("escondido");
+  telaLista.classList.remove("escondido");
+  
+  botaoSalvar.disabled = false;
+  botaoSalvar.textContent = "Salvar";
 
-    formAdicionar.reset();
-    document.getElementById("input-quantidade").value = 1;
-    telaAdicionar.classList.add("escondido");
-    telaLista.classList.remove("escondido");
-  } catch (erro) {
-    alert("Não foi possível salvar. Verifique sua internet e tente novamente.");
-  } finally {
-    botaoSalvar.disabled = false;
-    botaoSalvar.textContent = "Salvar";
-  }
+  // Envia para o Firebase em segundo plano
+  addDoc(collection(db, NOME_COLECAO), {
+    nome,
+    quantidade,
+    unidade,
+    observacao,
+    criadoPor: usuarioAtual,
+    criadoEm: serverTimestamp(),
+  }).catch((erro) => {
+    console.error("Erro ao salvar:", erro);
+  });
 });
 
 // ============================================================
