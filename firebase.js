@@ -17,12 +17,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY_AQUI",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJETO",
-  storageBucket: "SEU_PROJETO.appspot.com",
-  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
-  appId: "SEU_APP_ID",
+  apiKey: "AIzaSyAsYFOURvAA4ZWrVnznh8A7ucu7F2VPR6E",
+  authDomain: "casalist-d13c3.firebaseapp.com",
+  projectId: "casalist-d13c3",
+  storageBucket: "casalist-d13c3.firebasestorage.app",
+  messagingSenderId: "562942648670",
+  appId: "1:562942648670:web:786a8d1206398882982fcf",
+  measurementId: "G-2NG3G8C1GP"
 };
 
 const app = initializeApp(firebaseConfig);
